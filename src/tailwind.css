@@ -1,0 +1,16 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* Combining tailwind classes */
+.text-heading {
+  @apply font-heading font-semibold
+}
+
+.text-body {
+  @apply font-body font-medium tracking-wide text-base
+}
+
+.text-btn {
+  @apply font-body font-bold tracking-[0.5px] text-base
+}

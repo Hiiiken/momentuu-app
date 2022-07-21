@@ -1,0 +1,29 @@
+<template>
+<div class="flex">
+  <div class="bg-acc-1 p-14 h-screen w-1/2">
+    <onboarding-header class="h-1/3"></onboarding-header>
+    <onboarding-slider class="h-2/3"></onboarding-slider>
+    <!-- <router-link to="/register" class="text-body">Register</router-link> -->
+  </div>
+  <div class="bg-white p-14 h-screen w-1/2">
+    <login-form></login-form>
+  </div>
+</div>
+</template>
+
+<script lang="ts">
+import OnboardingHeader from '@/components/OnboardingHeader.vue'
+import OnboardingSlider from '@/components/OnboardingSlider.vue'
+import LoginForm from '@/components/LoginForm.vue'
+
+export default {
+  name: 'LoginUser',
+  components: {
+    OnboardingSlider, OnboardingHeader, LoginForm
+  },
+}
+</script>
+
+<style lang="scss">
+
+</style>
