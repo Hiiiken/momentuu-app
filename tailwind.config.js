@@ -12,6 +12,7 @@ module.exports = {
         'lt': '#9AA5B8',
         'acc-1': '#F6F4FC',
         'acc-2': '#F0F6FB',
+        'acc-3': '#B49A74',
         'lg-1': '#D7DBE2',
         'lg-2': '#EFF1F4',
       },
