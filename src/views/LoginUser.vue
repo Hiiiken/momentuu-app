@@ -12,7 +12,7 @@
 </div>
 </template>
 
-<script>
+<script lang="ts">
 import OnboardingHeader from '@/components/OnboardingHeader.vue'
 import OnboardingSlider from '@/components/OnboardingSlider.vue'
 import LoginForm from '@/components/LoginForm.vue'

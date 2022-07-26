@@ -16,16 +16,19 @@
     <form action="" class="text-left">
       <div class="input-group mb-8">
         <label for="email" class="inline-block mb-2 text-body text-h">Email</label>
-        <input v-model="email" type="text" id="email" name="email" placeholder="Your email" class="w-full border border-lg-1 rounded px-6 py-4 text-t text-body placeholder:text-lt focus:outline-none focus:border-s">
+        <input v-model="input.email" type="text" id="email" name="email" placeholder="Your email" class="w-full border border-lg-1 rounded px-6 py-4 text-t text-body placeholder:text-lt focus:outline-none focus:border-s">
       </div>
       <div class="input-group mb-8">
         <label for="password" class="inline-block mb-2 text-body text-h">Password</label>
         <input type="text" id="email" name="email" placeholder="6+ characters" class="w-full border border-lg-1 rounded px-6 py-4 text-t text-body placeholder:text-lt focus:outline-none focus:border-s">
       </div>
       <router-link to="/password-reset" class="text-body text-acc-3 block mb-8">Forgot password?</router-link>
-      <button type="submit" class="bg-p rounded px-6 py-4 w-full text-white text-btn flex justify-center hover:bg-s hover:text-white hover:border-s ease-in-out duration-300">Sing in</button>
+      <button @click="login()" type="button" class="bg-p rounded px-6 py-4 w-full text-white text-btn flex justify-center hover:bg-s hover:text-white hover:border-s ease-in-out duration-300">Sing in</button>
     </form>
-    <p>my name is {{ email }}</p>
+    <p>my name is {{ input.email }}</p>
+    <div v-for="user in myData" :key="user.id">
+      <p>{{ user.email }}</p>
+    </div>
   </div>
   <p class="absolute bottom-10 left-1/2 translate-x-[-50%]">
     Not a member?
@@ -33,15 +36,55 @@
   </p>
 </template>
 
-<script lang="ts">
-// import axios from "axios";
+<script>
+import axios from 'axios'
 
 export default {
   name: 'LoginForm',
   data() {
     return {
-      email: '',
-      password: ''
+      input: {
+        email: '',
+        password: ''
+      },
+      myData: [],
+      users: [
+        {
+          email: '',
+          password: ''
+        }
+      ]
+    }
+  },
+  beforeMount() {
+    this.loadData()
+  },
+  methods: {
+    loadData() {
+      axios
+      .get('http://localhost:3000/users')
+      .then(response => {
+        (this.myData = response.data)
+        // this.myData.forEach((element, index) => {
+        //   // console.log(element.email, index)
+        //   this.users.push({email: element.email, password: element.password})
+        // });
+      })
+      .catch(err => console.log(err.message))
+    },
+    login() {
+      // console.log(this.users)
+      this.myData.forEach((element) => {
+        if(this.input.email != '') {
+          if(this.input.email == element.email) {
+            console.log('LOGIN')
+          } else {
+            console.log('email incorrect')
+          }
+        } else {
+          console.log('Enter an email and a password!')
+        }
+      })
     }
   }
 }
