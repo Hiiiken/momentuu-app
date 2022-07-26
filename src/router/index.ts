@@ -3,6 +3,7 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import LoginUser from '../views/LoginUser.vue'
 import RegisterUser from '../views/RegisterUser.vue'
 import PasswordReset from '../views/PasswordReset.vue'
+import DashboardHome from '../views/DashboardHome.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -19,6 +20,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/password-reset',
     name: 'password-reset',
     component: PasswordReset
+  },
+  {
+    path: '/dashboard-home',
+    name: 'dashboard-home',
+    component: DashboardHome  
   }
 ]
 
