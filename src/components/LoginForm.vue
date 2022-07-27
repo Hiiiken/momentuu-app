@@ -41,24 +41,22 @@ import { useRouter } from 'vue-router'
 export default {
   name: 'LoginForm',
   setup() {
+    const router = useRouter();
+
     const data = reactive({
       email: '',
       password: ''
     });
 
-    const router = useRouter()
-
     const handleSubmit = () => {
-      // router.push('/dashboard-home')
-      
       axios
         .post('https://reqres.in/api/login', {
           email: data.email,
           password: data.password
         })
         .then(res => {
-          // console.log(res.data.token);
-          localStorage.setItem('my-token', res.data.token);
+          console.log(res);
+          localStorage.setItem('my-token', 'twe3gT5y62eRfuzhZWvC5g');
           router.push('/dashboard-home');
         })
         .catch(err => {
