@@ -15,11 +15,11 @@
     </div>
     <form @submit.prevent="handleSubmit()" class="text-left">
       <div class="input-group mb-8">
-        <label for="email" class="inline-block mb-2 text-body text-h">Email</label>
+        <label class="inline-block mb-2 text-body text-h">Email</label>
         <input v-model="data.email" required type="text" name="email" placeholder="Your email" class="w-full border border-lg-1 rounded px-6 py-4 text-t text-body placeholder:text-lt focus:outline-none focus:border-s">
       </div>
       <div class="input-group mb-8">
-        <label for="password" class="inline-block mb-2 text-body text-h">Password</label>
+        <label class="inline-block mb-2 text-body text-h">Password</label>
         <input v-model="data.password" type="password" name="password" placeholder="6+ characters" class="w-full border border-lg-1 rounded px-6 py-4 text-t text-body placeholder:text-lt focus:outline-none focus:border-s">
       </div>
       <router-link to="/password-reset" class="text-body text-acc-3 block mb-8">Forgot password?</router-link>
