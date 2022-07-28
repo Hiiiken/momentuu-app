@@ -3,8 +3,8 @@
   <!-- <p>Welcome {{ user }}</p> -->
 </template>
 
-<script>
-import axios from 'axios';
+<script lang="ts">
+// import axios from 'axios';
 import { useRouter } from 'vue-router'
 
 export default {

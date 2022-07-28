@@ -1,6 +1,8 @@
 <template>
   <div class="onboarding-header">
-    <img src="@/assets/images/logo.png" alt="logo" class="mb-8">
+    <a href="/">
+      <img src="@/assets/images/logo.png" alt="logo" class="mb-8">
+    </a>
     <h1 class="text-5xl text-h w-[600px] max-w-full text-heading leading-tight">The simplest todolist and habit tracker.</h1>
   </div>
 </template>

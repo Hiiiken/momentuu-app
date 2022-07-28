@@ -33,7 +33,7 @@
   </p>
 </template>
 
-<script>
+<script lang="ts">
 import axios from 'axios';
 import { reactive } from 'vue';
 import { useRouter } from 'vue-router'
@@ -56,7 +56,9 @@ export default {
         })
         .then(res => {
           console.log(res);
-          localStorage.setItem('my-token', 'twe3gT5y62eRfuzhZWvC5g');
+          console.log(res.data.token);
+          // localStorage.setItem('my-token', 'twe3gT5y62eRfuzhZWvC5g');
+          localStorage.setItem('my-token', res.data.token);
           router.push('/dashboard-home');
         })
         .catch(err => {

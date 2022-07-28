@@ -1,5 +1,5 @@
 <template>
-  <div class="onboardingslider text-center">
+  <div class="onboarding-slider text-center">
     <img src="@/assets/images/slide-2.png" alt="slide-1-illustration" class="w-[620px] m-auto mb-5">
     <h3 class="text-heading text-2xl text-h pb-3 w-[620px] max-w-full m-auto">
       Build daily habits
