@@ -1,5 +1,5 @@
 <template>
-  <div class="text-center w-full absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] xl:max-w-[500px] sm:max-w-[350px]">
+  <div class="text-center md:absolute md:top-1/2 md:left-1/2 md:translate-x-[-50%] md:translate-y-[-50%] md:w-[420px] md:max-w-full">
     <h3 class="text-heading text-2xl text-h pb-8">
       Sign in to Momentuu
     </h3>
@@ -27,7 +27,7 @@
     </form>
     <!-- <p>my name is {{ data.email }}</p> -->
   </div>
-  <p class="absolute bottom-10 left-1/2 translate-x-[-50%]">
+  <p class="md:absolute md:bottom-10 md:left-1/2 md:translate-x-[-50%] text-center mt-8">
     Not a member?
     <router-link to="/register" class="text-body text-acc-3 mb-8">Sign up now</router-link>
   </p>

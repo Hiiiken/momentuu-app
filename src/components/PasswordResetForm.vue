@@ -1,5 +1,5 @@
 <template>
-  <div class="text-center w-full absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] xl:max-w-[500px] sm:max-w-[350px]">
+  <div class="text-center md:absolute md:top-1/2 md:left-1/2 md:translate-x-[-50%] md:translate-y-[-50%] md:w-[420px] md:max-w-full">
     <h3 class="text-heading text-2xl text-h pb-4 text-left">
       Forgot password?
     </h3>
