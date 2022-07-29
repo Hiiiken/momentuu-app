@@ -13,27 +13,26 @@
       <span class="mx-2 text-body text-lt">Or</span>
       <span class="w-full h-[1px] bg-slate-500 text-black block bg-lg-1"></span>
     </div>
+    <!-- Error messages box -->
+    <ul v-if="data.errors.length" class="list-disc bg-red-50 rounded border border-red-200 p-4 mb-8 text-red-400 font-body text-left">
+      <li v-for="error in data.errors" :key="error" class="ml-4">{{ error }}</li>
+    </ul>
     <form @submit.prevent="handleSubmit" class="text-left">
       <div class="input-group mb-8">
         <label class="inline-block mb-2 text-body text-h">Name</label>
         <input :class="{'border-red-400': data.isError && !data.name}" v-model="data.name" type="text" name="name" placeholder="Your name" class="w-full border border-lg-1 rounded px-6 py-4 text-t text-body placeholder:text-lt focus:outline-none focus:border-s">
-        <p v-if="data.isError && !data.name" :class="'mt-4 text-red-400 font-body'">This field is required</p>
       </div>
       <div class="input-group mb-8">
         <label class="inline-block mb-2 text-body text-h">Email</label>
-        <input :class="{'border-red-400': data.isError && !data.email}" v-model="data.email" type="text" name="email" placeholder="Your email" class="w-full border border-lg-1 rounded px-6 py-4 text-t text-body placeholder:text-lt focus:outline-none focus:border-s">
-        <p v-if="data.isError && !data.email" :class="'mt-4 text-red-400 font-body'">This field is required</p>
-        <p v-if="data.isError && data.emailError" :class="'mt-4 text-red-400 font-body'">{{ data.emailError }}</p>
+        <input :class="{'border-red-400': data.isError && !data.email || data.emailError}" v-model="data.email" type="text" name="email" placeholder="Your email" class="w-full border border-lg-1 rounded px-6 py-4 text-t text-body placeholder:text-lt focus:outline-none focus:border-s">
       </div>
       <div class="input-group mb-8">
         <label class="inline-block mb-2 text-body text-h">Password</label>
-        <input :class="{'border-red-400': data.isError && !data.password}" v-model="data.password" type="password" name="password" placeholder="6+ characters" class="w-full border border-lg-1 rounded px-6 py-4 text-t text-body placeholder:text-lt focus:outline-none focus:border-s">
-        <p v-if="data.isError && !data.password" :class="'mt-4 text-red-400 font-body'">This field is required</p>
-        <p v-if="data.isError && data.passwordError" :class="'mt-4 text-red-400 font-body'">{{ data.passwordError }}</p>
+        <input :class="{'border-red-400': data.isError && !data.password || data.passwordError}" v-model="data.password" type="password" name="password" placeholder="6+ characters" class="w-full border border-lg-1 rounded px-6 py-4 text-t text-body placeholder:text-lt focus:outline-none focus:border-s">
       </div>
       <div class="input-group mb-8 flex items-center">
         <input v-model="data.conditions" type="checkbox" id="conditions" name="conditions" class="mr-2 w-4 h-4 accent-s">
-        <label :class="{'text-p': !data.conditions && data.isError}" for="conditions" class="inline-block text-body text-h">Agree to our terms & condition</label>
+        <label :class="{'text-p': !data.conditions && data.isError}" for="conditions" class="inline-block text-body text-h">Agree to our terms & conditions</label>
       </div>
       <button type="submit" class="bg-p rounded px-6 py-4 w-full text-white text-btn flex justify-center hover:bg-s hover:text-white hover:border-s ease-in-out duration-300">Create account</button>
     </form>
@@ -61,7 +60,8 @@ export default {
       conditions: false,
       isError: false,
       emailError: '',
-      passwordError: ''
+      passwordError: '',
+      errors: []
     });
 
     const isValidEmail = (email) => {
@@ -76,9 +76,11 @@ export default {
       data.isError = false;
       data.emailError = '';
       data.passwordError = '';
+      data.errors = [];
 
       if(!data.name || !data.email || !data.password || !data.conditions) {
         data.isError = true;
+        data.errors.push('All fields are required');
         return;
       }
 
@@ -86,13 +88,19 @@ export default {
         data.isError = true;
         data.emailError = 'Email is invalid';
         data.passwordError = 'Password must be more that 6 characters';
+        data.errors.push(data.emailError);
+        data.errors.push(data.passwordError);
         return;
-      } else if (!isValidEmail(data.email) && isValidPassword(data.password)) {
+      } else if(!isValidEmail(data.email)) {
         data.isError = true;
         data.emailError = 'Email is invalid';
-      } else if (isValidEmail(data.email) && !isValidPassword(data.password)) {
+        data.errors.push(data.emailError);
+        return;
+      } else if(!isValidPassword(data.password)) {
         data.isError = true;
         data.passwordError = 'Password must be more that 6 characters';
+        data.errors.push(data.passwordError);
+        return;
       }
 
       axios
@@ -108,6 +116,9 @@ export default {
         })
         .catch(err => {
           console.log(err);
+          if(err.response.status == 400) {
+            data.errors.push('API Note: Only defined users succeed registration')
+          }
         });
     }
 
