@@ -51,7 +51,6 @@ export default {
       email: '',
       password: '',
       isError: false,
-      backEndError: false,
       emailError: '',
       passwordError: '',
       errors: []
@@ -71,10 +70,9 @@ export default {
       data.passwordError = '';
       data.errors = [];
 
-      if(!data.email && !data.password || !data.email || !data.password) {
+      if(!data.email || !data.password) {
         data.isError = true;
         data.errors.push('All fields are required');
-        data.backEndError = false
         return;
       }
 
@@ -97,11 +95,6 @@ export default {
         return;
       }
 
-
-      if(!data.backEndError) {
-        data.errors.push('User not found');
-      }
-
       axios
         .post('https://reqres.in/api/login', {
           email: data.email,
@@ -116,7 +109,7 @@ export default {
           console.log(err);
           localStorage.removeItem('my-token');
           if(err.response.status == 400) {
-            data.backEndError = true;
+            data.errors.push('User not found');
           }
         });
     }
