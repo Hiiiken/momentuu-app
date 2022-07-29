@@ -15,28 +15,32 @@
     </div>
     <form @submit.prevent="handleSubmit" class="text-left">
       <div class="input-group mb-8">
-        <label for="name" class="inline-block mb-2 text-body text-h">Name</label>
-        <input v-model="data.name" type="text" name="name" placeholder="Your name" class="w-full border border-lg-1 rounded px-6 py-4 text-t text-body placeholder:text-lt focus:outline-none focus:border-s">
+        <label class="inline-block mb-2 text-body text-h">Name</label>
+        <input :class="{'border-red-400': data.isError && !data.name}" v-model="data.name" type="text" name="name" placeholder="Your name" class="w-full border border-lg-1 rounded px-6 py-4 text-t text-body placeholder:text-lt focus:outline-none focus:border-s">
+        <p v-if="data.isError && !data.name" :class="'mt-4 text-red-400 font-body'">This field is required</p>
       </div>
       <div class="input-group mb-8">
-        <label for="email" class="inline-block mb-2 text-body text-h">Email</label>
-        <input v-model="data.email" type="text" name="email" placeholder="Your email" class="w-full border border-lg-1 rounded px-6 py-4 text-t text-body placeholder:text-lt focus:outline-none focus:border-s">
+        <label class="inline-block mb-2 text-body text-h">Email</label>
+        <input :class="{'border-red-400': data.isError && !data.email}" v-model="data.email" type="text" name="email" placeholder="Your email" class="w-full border border-lg-1 rounded px-6 py-4 text-t text-body placeholder:text-lt focus:outline-none focus:border-s">
+        <p v-if="data.isError && !data.email" :class="'mt-4 text-red-400 font-body'">This field is required</p>
+        <p v-if="data.isError && data.emailError" :class="'mt-4 text-red-400 font-body'">{{ data.emailError }}</p>
       </div>
       <div class="input-group mb-8">
-        <label for="password" class="inline-block mb-2 text-body text-h">Password</label>
-        <input v-model="data.password" type="password" name="password" placeholder="6+ characters" class="w-full border border-lg-1 rounded px-6 py-4 text-t text-body placeholder:text-lt focus:outline-none focus:border-s">
+        <label class="inline-block mb-2 text-body text-h">Password</label>
+        <input :class="{'border-red-400': data.isError && !data.password}" v-model="data.password" type="password" name="password" placeholder="6+ characters" class="w-full border border-lg-1 rounded px-6 py-4 text-t text-body placeholder:text-lt focus:outline-none focus:border-s">
+        <p v-if="data.isError && !data.password" :class="'mt-4 text-red-400 font-body'">This field is required</p>
+        <p v-if="data.isError && data.passwordError" :class="'mt-4 text-red-400 font-body'">{{ data.passwordError }}</p>
       </div>
       <div class="input-group mb-8 flex items-center">
-        <input v-model="data.conditions" required type="checkbox" id="conditions" name="conditions" class="mr-2 w-4 h-4 accent-s">
-        <label for="conditions" class="inline-block text-body text-h">Agree to our terms & condition</label>
+        <input v-model="data.conditions" type="checkbox" id="conditions" name="conditions" class="mr-2 w-4 h-4 accent-s">
+        <label :class="{'text-p': !data.conditions && data.isError}" for="conditions" class="inline-block text-body text-h">Agree to our terms & condition</label>
       </div>
       <button type="submit" class="bg-p rounded px-6 py-4 w-full text-white text-btn flex justify-center hover:bg-s hover:text-white hover:border-s ease-in-out duration-300">Create account</button>
     </form>
-    <!-- <p>my name is {{ data.email }}</p> -->
   </div>
-  <p class="md:absolute md:bottom-10 md:left-1/2 md:translate-x-[-50%] text-center mt-8">
+  <p class="md:absolute md:bottom-10 md:left-1/2 md:translate-x-[-50%] text-center mt-8 text-t">
     Already a member?
-    <router-link to="/" class="text-body text-acc-3 mb-8">Sign in</router-link>
+    <router-link to="/" class="text-body text-s mb-8 hover:text-p">Sign in</router-link>
   </p>
 </template>
 
@@ -54,10 +58,43 @@ export default {
       name: '',
       email: '',
       password: '',
-      conditions: false
+      conditions: false,
+      isError: false,
+      emailError: '',
+      passwordError: ''
     });
 
+    const isValidEmail = (email) => {
+      return /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email)
+    }
+
+    const isValidPassword = (password) => {
+      return password.length > 6
+    }
+
     const handleSubmit = () => {
+      data.isError = false;
+      data.emailError = '';
+      data.passwordError = '';
+
+      if(!data.name || !data.email || !data.password || !data.conditions) {
+        data.isError = true;
+        return;
+      }
+
+      if(!isValidEmail(data.email) && !isValidPassword(data.password)) {
+        data.isError = true;
+        data.emailError = 'Email is invalid';
+        data.passwordError = 'Password must be more that 6 characters';
+        return;
+      } else if (!isValidEmail(data.email) && isValidPassword(data.password)) {
+        data.isError = true;
+        data.emailError = 'Email is invalid';
+      } else if (isValidEmail(data.email) && !isValidPassword(data.password)) {
+        data.isError = true;
+        data.passwordError = 'Password must be more that 6 characters';
+      }
+
       axios
         .post('https://reqres.in/api/register', {
           name: data.name,
@@ -76,7 +113,7 @@ export default {
 
     return {
       data,
-      handleSubmit
+      handleSubmit,
     }
   }
 }
