@@ -7,7 +7,6 @@
   <div class="bg-white p-14 md:w-1/2 relative">
     <password-reset-form />
   </div>
-  
 </div>
 </template>
 
