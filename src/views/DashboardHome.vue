@@ -1,25 +1,23 @@
 <template>
-  <h1>You reached the dashboard!</h1>
-  <!-- <p>Welcome {{ user }}</p> -->
+  <h1>You reached the dashboard! Welcome!</h1>
 </template>
 
 <script lang="ts">
 // import axios from 'axios';
-import { useRouter } from 'vue-router'
+import { defineComponent } from "@vue/runtime-core";
+import { useRouter } from "vue-router";
 
-export default {
-  name: 'DashboardHome',
+export default defineComponent({
+  name: "DashboardHome",
   setup() {
     const router = useRouter();
 
-    if(!localStorage.getItem('my-token')) {
-      router.push('/');
+    if (!localStorage.getItem("my-token")) {
+      router.push("/");
       return;
     }
 
-    return {
-
-    }
+    return {};
   },
-}
+});
 </script>
