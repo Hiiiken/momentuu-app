@@ -79,7 +79,7 @@ export default {
       if(!isEmailValid(data.email) && !isPasswordValid(data.password)) {
         data.isError = true;
         data.emailError = 'Email is invalid';
-        data.passwordError = 'Password must be more that 6 characters';
+        data.passwordError = 'Password must be more than 6 characters';
         data.errors.push(data.emailError);
         data.errors.push(data.passwordError);
         return;
@@ -90,7 +90,7 @@ export default {
         return;
       } else if(!isPasswordValid(data.password)) {
         data.isError = true;
-        data.passwordError = 'Password must be more that 6 characters';
+        data.passwordError = 'Password must be more than 6 characters';
         data.errors.push(data.passwordError);
         return;
       }
