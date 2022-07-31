@@ -1,17 +1,21 @@
 <template>
   <div
-    class="user-profile bg-p inline-block w-12 h-12 rounded-full text-center pt-3 text-heading"
+    class="bg-p inline-block w-12 h-12 rounded-full text-center pt-3 text-heading"
+    @click="handleClick"
   >
     <p>H</p>
   </div>
-  <ul>
+  <ul
+    v-if="data.hideDropdown"
+    class="profile-dropdown bg-lg-1 max-w-[300px] p-4 rounded mt-2 block"
+  >
     <li><a @click="Logout">Logout</a></li>
   </ul>
 </template>
 
 <script lang="ts">
 import router from "@/router";
-import { defineComponent } from "vue";
+import { defineComponent, reactive } from "vue";
 
 export default defineComponent({
   name: "UserNav",
@@ -22,11 +26,20 @@ export default defineComponent({
       router.push("/");
     };
 
+    let data = reactive({
+      hideDropdown: false,
+    });
+
+    const handleClick = () => {
+      data.hideDropdown = !data.hideDropdown;
+      console.log(data.hideDropdown);
+    };
+
     return {
       Logout,
+      handleClick,
+      data,
     };
   },
 });
 </script>
-
-<style scoped></style>
