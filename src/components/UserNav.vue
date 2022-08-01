@@ -1,16 +1,18 @@
 <template>
-  <div
-    class="bg-p inline-block w-12 h-12 rounded-full text-center pt-3 text-heading"
-    @click="handleClick"
-  >
-    <p>H</p>
+  <div class="absolute top-[54px] right-[72px]">
+    <div
+      class="cursor-pointer bg-p inline-block w-12 h-12 rounded-full text-center pt-3 text-heading absolute right-0 text-white leading-7"
+      @click="handleClick"
+    >
+      <p>H</p>
+    </div>
+    <ul
+      v-if="data.hideDropdown"
+      class="bg-h text-white w-[250px] p-4 rounded mt-14 block ease-in-out duration-600 hover:bg-s"
+    >
+      <li class="cursor-pointer"><a @click="Logout">Logout</a></li>
+    </ul>
   </div>
-  <ul
-    v-if="data.hideDropdown"
-    class="profile-dropdown bg-lg-1 max-w-[300px] p-4 rounded mt-2 block"
-  >
-    <li><a @click="Logout">Logout</a></li>
-  </ul>
 </template>
 
 <script lang="ts">
@@ -32,7 +34,6 @@ export default defineComponent({
 
     const handleClick = () => {
       data.hideDropdown = !data.hideDropdown;
-      console.log(data.hideDropdown);
     };
 
     return {
