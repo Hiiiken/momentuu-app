@@ -1,6 +1,6 @@
 <template>
-  <h1>You reached the dashboard! Welcome!</h1>
   <user-nav />
+  <the-sidebar />
 </template>
 
 <script lang="ts">
@@ -8,11 +8,13 @@
 import { defineComponent } from "@vue/runtime-core";
 import { useRouter } from "vue-router";
 import UserNav from "@/components/UserNav.vue";
+import TheSidebar from "@/components/TheSidebar.vue";
 
 export default defineComponent({
   name: "DashboardHome",
   components: {
     UserNav,
+    TheSidebar,
   },
   setup() {
     const router = useRouter();

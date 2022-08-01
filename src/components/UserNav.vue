@@ -1,5 +1,5 @@
 <template>
-  <div class="absolute top-[54px] right-[72px]">
+  <div class="absolute top-[56px] right-[50px]">
     <div
       class="cursor-pointer bg-p inline-block w-12 h-12 rounded-full text-center pt-3 text-heading absolute right-0 text-white leading-7"
       @click="handleClick"
