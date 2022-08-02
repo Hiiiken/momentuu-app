@@ -10,7 +10,7 @@
       v-if="data.hideDropdown"
       class="bg-h text-white w-[250px] p-4 rounded mt-14 block ease-in-out duration-600 hover:bg-s"
     >
-      <li class="cursor-pointer"><a @click="Logout">Logout</a></li>
+      <li class="cursor-pointer" @click="Logout"><a>Logout</a></li>
     </ul>
   </div>
 </template>

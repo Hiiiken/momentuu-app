@@ -1,6 +1,256 @@
 <template>
   <user-nav />
-  <the-sidebar />
+  <div class="flex h-full">
+    <div class="w-full lg:max-w-[320px] max-w-[80px] fixed">
+      <the-sidebar class="h-screen" />
+    </div>
+    <div
+      class="bg-lg-1 w-full lg:p-[56px] p-[40px] pt-[56px] lg:pl-[376px] pl-[120px]"
+    >
+      <h2>Welcome back!</h2>
+      <p>Let’s be a bit more productive today, eh?</p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+        similique unde dolores quidem placeat aperiam ad debitis. Eos nam facere
+        itaque veritatis libero repellat consectetur, expedita a quos vitae
+        debitis?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+        similique unde dolores quidem placeat aperiam ad debitis. Eos nam facere
+        itaque veritatis libero repellat consectetur, expedita a quos vitae
+        debitis?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+        similique unde dolores quidem placeat aperiam ad debitis. Eos nam facere
+        itaque veritatis libero repellat consectetur, expedita a quos vitae
+        debitis?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+        similique unde dolores quidem placeat aperiam ad debitis. Eos nam facere
+        itaque veritatis libero repellat consectetur, expedita a quos vitae
+        debitis?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+        similique unde dolores quidem placeat aperiam ad debitis. Eos nam facere
+        itaque veritatis libero repellat consectetur, expedita a quos vitae
+        debitis?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+        similique unde dolores quidem placeat aperiam ad debitis. Eos nam facere
+        itaque veritatis libero repellat consectetur, expedita a quos vitae
+        debitis?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+        similique unde dolores quidem placeat aperiam ad debitis. Eos nam facere
+        itaque veritatis libero repellat consectetur, expedita a quos vitae
+        debitis?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+        similique unde dolores quidem placeat aperiam ad debitis. Eos nam facere
+        itaque veritatis libero repellat consectetur, expedita a quos vitae
+        debitis?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+        similique unde dolores quidem placeat aperiam ad debitis. Eos nam facere
+        itaque veritatis libero repellat consectetur, expedita a quos vitae
+        debitis?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+        similique unde dolores quidem placeat aperiam ad debitis. Eos nam facere
+        itaque veritatis libero repellat consectetur, expedita a quos vitae
+        debitis?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+        similique unde dolores quidem placeat aperiam ad debitis. Eos nam facere
+        itaque veritatis libero repellat consectetur, expedita a quos vitae
+        debitis?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+        similique unde dolores quidem placeat aperiam ad debitis. Eos nam facere
+        itaque veritatis libero repellat consectetur, expedita a quos vitae
+        debitis?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+        similique unde dolores quidem placeat aperiam ad debitis. Eos nam facere
+        itaque veritatis libero repellat consectetur, expedita a quos vitae
+        debitis?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+        similique unde dolores quidem placeat aperiam ad debitis. Eos nam facere
+        itaque veritatis libero repellat consectetur, expedita a quos vitae
+        debitis?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+        similique unde dolores quidem placeat aperiam ad debitis. Eos nam facere
+        itaque veritatis libero repellat consectetur, expedita a quos vitae
+        debitis?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+        similique unde dolores quidem placeat aperiam ad debitis. Eos nam facere
+        itaque veritatis libero repellat consectetur, expedita a quos vitae
+        debitis?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+        similique unde dolores quidem placeat aperiam ad debitis. Eos nam facere
+        itaque veritatis libero repellat consectetur, expedita a quos vitae
+        debitis?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+        similique unde dolores quidem placeat aperiam ad debitis. Eos nam facere
+        itaque veritatis libero repellat consectetur, expedita a quos vitae
+        debitis?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+        similique unde dolores quidem placeat aperiam ad debitis. Eos nam facere
+        itaque veritatis libero repellat consectetur, expedita a quos vitae
+        debitis?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+        similique unde dolores quidem placeat aperiam ad debitis. Eos nam facere
+        itaque veritatis libero repellat consectetur, expedita a quos vitae
+        debitis?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+        similique unde dolores quidem placeat aperiam ad debitis. Eos nam facere
+        itaque veritatis libero repellat consectetur, expedita a quos vitae
+        debitis?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+        similique unde dolores quidem placeat aperiam ad debitis. Eos nam facere
+        itaque veritatis libero repellat consectetur, expedita a quos vitae
+        debitis?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+        similique unde dolores quidem placeat aperiam ad debitis. Eos nam facere
+        itaque veritatis libero repellat consectetur, expedita a quos vitae
+        debitis?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+        similique unde dolores quidem placeat aperiam ad debitis. Eos nam facere
+        itaque veritatis libero repellat consectetur, expedita a quos vitae
+        debitis?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+        similique unde dolores quidem placeat aperiam ad debitis. Eos nam facere
+        itaque veritatis libero repellat consectetur, expedita a quos vitae
+        debitis?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+        similique unde dolores quidem placeat aperiam ad debitis. Eos nam facere
+        itaque veritatis libero repellat consectetur, expedita a quos vitae
+        debitis?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+        similique unde dolores quidem placeat aperiam ad debitis. Eos nam facere
+        itaque veritatis libero repellat consectetur, expedita a quos vitae
+        debitis?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+        similique unde dolores quidem placeat aperiam ad debitis. Eos nam facere
+        itaque veritatis libero repellat consectetur, expedita a quos vitae
+        debitis?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+        similique unde dolores quidem placeat aperiam ad debitis. Eos nam facere
+        itaque veritatis libero repellat consectetur, expedita a quos vitae
+        debitis?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+        similique unde dolores quidem placeat aperiam ad debitis. Eos nam facere
+        itaque veritatis libero repellat consectetur, expedita a quos vitae
+        debitis?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+        similique unde dolores quidem placeat aperiam ad debitis. Eos nam facere
+        itaque veritatis libero repellat consectetur, expedita a quos vitae
+        debitis?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+        similique unde dolores quidem placeat aperiam ad debitis. Eos nam facere
+        itaque veritatis libero repellat consectetur, expedita a quos vitae
+        debitis?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+        similique unde dolores quidem placeat aperiam ad debitis. Eos nam facere
+        itaque veritatis libero repellat consectetur, expedita a quos vitae
+        debitis?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+        similique unde dolores quidem placeat aperiam ad debitis. Eos nam facere
+        itaque veritatis libero repellat consectetur, expedita a quos vitae
+        debitis?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+        similique unde dolores quidem placeat aperiam ad debitis. Eos nam facere
+        itaque veritatis libero repellat consectetur, expedita a quos vitae
+        debitis?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+        similique unde dolores quidem placeat aperiam ad debitis. Eos nam facere
+        itaque veritatis libero repellat consectetur, expedita a quos vitae
+        debitis?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+        similique unde dolores quidem placeat aperiam ad debitis. Eos nam facere
+        itaque veritatis libero repellat consectetur, expedita a quos vitae
+        debitis?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+        similique unde dolores quidem placeat aperiam ad debitis. Eos nam facere
+        itaque veritatis libero repellat consectetur, expedita a quos vitae
+        debitis?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+        similique unde dolores quidem placeat aperiam ad debitis. Eos nam facere
+        itaque veritatis libero repellat consectetur, expedita a quos vitae
+        debitis?
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
+        similique unde dolores quidem placeat aperiam ad debitis. Eos nam facere
+        itaque veritatis libero repellat consectetur, expedita a quos vitae
+        debitis?
+      </p>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
