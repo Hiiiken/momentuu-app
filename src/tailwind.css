@@ -4,13 +4,17 @@
 
 /* Combining tailwind classes */
 .text-heading {
-  @apply font-heading font-semibold
+  @apply font-heading font-semibold;
 }
 
 .text-body {
-  @apply font-body font-normal tracking-wide text-base
+  @apply font-body font-normal tracking-wide text-base;
+}
+
+.text-body-sm {
+  @apply font-body font-normal tracking-wide text-sm;
 }
 
 .text-btn {
-  @apply font-body font-bold tracking-[0.5px] text-base
+  @apply font-body font-bold tracking-[0.5px] text-base;
 }
