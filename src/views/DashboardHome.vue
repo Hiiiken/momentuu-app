@@ -1,11 +1,13 @@
 <template>
   <user-nav />
   <div class="flex h-full">
-    <div class="w-full lg:max-w-[320px] max-w-[80px] fixed">
+    <div
+      class="w-full lg:max-w-[320px] max-w-[80px] fixed ease-in-out duration-100"
+    >
       <the-sidebar class="h-screen" />
     </div>
     <div
-      class="bg-lg-1 w-full lg:p-[56px] p-[40px] pt-[56px] lg:pl-[376px] pl-[120px]"
+      class="bg-lg-1 w-full lg:p-[56px] p-[40px] pt-[56px] lg:pl-[376px] pl-[120px] ease-in-out duration-100"
     >
       <h2>Welcome back!</h2>
       <p>Let’s be a bit more productive today, eh?</p>

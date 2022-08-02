@@ -1,8 +1,18 @@
 <template>
-  <div class="bg-acc-1 lg:p-[56px] pt-[56px] px-[24px] relative">
+  <div
+    class="bg-acc-1 lg:p-[56px] pt-[56px] px-[24px] relative ease-in-out duration-100"
+  >
     <a href="/" class="block mb-[72px]">
-      <img src="@/assets/images/logo.png" alt="logo" class="lg:block hidden" />
-      <img src="@/assets/images/logo-icon.png" alt="logo" class="lg:hidden" />
+      <img
+        src="@/assets/images/logo.png"
+        alt="logo"
+        class="lg:block hidden ease-in-out duration-100"
+      />
+      <img
+        src="@/assets/images/logo-icon.png"
+        alt="logo"
+        class="lg:hidden ease-in-out duration-100"
+      />
     </a>
     <ul class="lg:text-left text-center">
       <li class="lg:block inline-block mb-6">
