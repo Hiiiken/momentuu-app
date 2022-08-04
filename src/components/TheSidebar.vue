@@ -89,7 +89,8 @@ export default defineComponent({
 </script>
 
 <style>
-a:hover .icon path {
+a:hover .icon path,
+button:hover .icon path {
   stroke: #e37871;
   transition: all ease-in-out 300ms;
 }

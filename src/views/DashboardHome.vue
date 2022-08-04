@@ -17,12 +17,19 @@
           Let’s be a bit more productive today, eh?
         </p>
       </div>
-      <base-dropdown
-        :options="data"
-        defaultValue="Select something"
-        label="Hiken Label"
-        @onChange="selectedValue"
-      />
+      <div class="flex items-center">
+        <base-dropdown
+          :options="data"
+          defaultValue="Select something"
+          @onChange="selectedValue"
+        />
+        <button
+          class="flex items-center ml-6 text-btn text-s ease-in-out duration-300 hover:text-p"
+        >
+          <time-icon color="#152E58" class="icon mr-2" />
+          New label
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -34,6 +41,7 @@ import { useRouter } from "vue-router";
 import UserNav from "@/components/UserNav.vue";
 import TheSidebar from "@/components/TheSidebar.vue";
 import BaseDropdown from "@/components/BaseDropdown.vue";
+import TimeIcon from "@/components/icons/TimeIcon.vue";
 
 export default defineComponent({
   name: "DashboardHome",
@@ -41,6 +49,7 @@ export default defineComponent({
     UserNav,
     TheSidebar,
     BaseDropdown,
+    TimeIcon,
   },
   setup() {
     const router = useRouter();
@@ -65,3 +74,5 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped></style>
