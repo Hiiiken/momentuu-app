@@ -2,7 +2,7 @@
   <label v-if="label" class="text-body text-h block mb-2">{{ label }}</label>
   <select
     class="bg-lg-2 px-6 py-4 rounded text-lt text-body"
-    @change="(e) => onChange(e.target.value)"
+    @change="(event) => onChange((event.target as HTMLSelectElement).value)"
   >
     <option selected disabled>{{ defaultValue }}</option>
     <option v-for="option in options.labels" :key="option" :value="option">
@@ -30,10 +30,12 @@ export default defineComponent({
       required: true,
     },
   },
+  emits: ["onChange"],
 
-  setup() {
+  setup(props, { emit }) {
     const onChange = (myvalue: string | number) => {
-      console.log(myvalue);
+      // console.log(myvalue);
+      emit("onChange", myvalue);
     };
 
     return {

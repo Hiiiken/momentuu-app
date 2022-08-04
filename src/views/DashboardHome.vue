@@ -20,7 +20,8 @@
       <base-dropdown
         :options="data"
         defaultValue="Select something"
-        label="Hiken"
+        label="Hiken Label"
+        @onChange="selectedValue"
       />
     </div>
   </div>
@@ -53,8 +54,13 @@ export default defineComponent({
       labels: ["Coding", "Design", "Reading"],
     });
 
+    const selectedValue = (myvalue: string | number) => {
+      console.log(myvalue);
+    };
+
     return {
       data,
+      selectedValue,
     };
   },
 });
