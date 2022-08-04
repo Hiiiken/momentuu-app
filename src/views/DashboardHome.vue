@@ -9,7 +9,7 @@
     <div
       class="bg-white w-full min-h-screen lg:p-[56px] p-[40px] pt-[56px] lg:pl-[376px] pl-[120px] ease-in-out duration-100"
     >
-      <div>
+      <div class="mb-10">
         <h2 class="font-heading text-4xl leading-snug text-h mb-2">
           Welcome back!
         </h2>
@@ -17,22 +17,29 @@
           Let’s be a bit more productive today, eh?
         </p>
       </div>
+      <base-dropdown
+        :options="data"
+        defaultValue="Select something"
+        label="Hiken"
+      />
     </div>
   </div>
 </template>
 
 <script lang="ts">
 // import axios from 'axios';
-import { defineComponent } from "@vue/runtime-core";
+import { defineComponent, reactive } from "@vue/runtime-core";
 import { useRouter } from "vue-router";
 import UserNav from "@/components/UserNav.vue";
 import TheSidebar from "@/components/TheSidebar.vue";
+import BaseDropdown from "@/components/BaseDropdown.vue";
 
 export default defineComponent({
   name: "DashboardHome",
   components: {
     UserNav,
     TheSidebar,
+    BaseDropdown,
   },
   setup() {
     const router = useRouter();
@@ -42,7 +49,13 @@ export default defineComponent({
       return;
     }
 
-    return {};
+    let data = reactive({
+      labels: ["Coding", "Design", "Reading"],
+    });
+
+    return {
+      data,
+    };
   },
 });
 </script>
