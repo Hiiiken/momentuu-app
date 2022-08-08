@@ -17,21 +17,25 @@
           Let’s be a bit more productive today, eh?
         </p>
       </div>
-      <div class="flex items-center">
-        <base-dropdown
-          :options="data"
-          label="Hiken Label"
-          defaultValue="Select something"
-          @onChange="selectedValue"
-        />
-        <button
-          @click="showModal"
-          class="flex items-center ml-6 text-btn text-s ease-in-out duration-300 hover:text-p"
-        >
-          <plus-icon color="#152E58" class="icon mr-2" />
-          New label
-        </button>
+      <div class="dropdown-btn-group flex items-center">
+        <div class="inline-block">
+          <base-dropdown
+            :options="data"
+            defaultValue="Select something"
+            @onChange="selectedValue"
+          />
+        </div>
+        <div class="inline-block">
+          <button
+            @click="showModal"
+            class="flex items-center ml-6 text-btn text-s ease-in-out duration-300 hover:text-p"
+          >
+            <plus-icon color="#152E58" class="icon mr-2" />
+            New label
+          </button>
+        </div>
       </div>
+
       <base-modal
         title="New label"
         text="Lorem ipsum"
