@@ -20,7 +20,7 @@
           href="#"
           class="text-btn text-h flex items-center ease-in-out duration-300 hover:text-p"
         >
-          <time-icon :color="'#1E1E1E'" class="icon lg:mr-2" />
+          <time-icon color="#1E1E1E" class="icon lg:mr-2" />
           <span class="lg:block hidden">Pomodoro & Todos</span>
         </a>
       </li>
@@ -29,7 +29,7 @@
           href="#"
           class="text-btn text-h flex items-center ease-in-out duration-300 hover:text-p"
         >
-          <target-icon :color="'#1E1E1E'" class="icon lg:mr-2" />
+          <target-icon color="#1E1E1E" class="icon lg:mr-2" />
           <span class="lg:block hidden">Habit Tracker</span>
         </a>
       </li>
@@ -38,7 +38,7 @@
           href="#"
           class="text-btn text-h flex items-center ease-in-out duration-300 hover:text-p"
         >
-          <stats-icon :color="'#1E1E1E'" class="icon lg:mr-2" />
+          <stats-icon color="#1E1E1E" class="icon lg:mr-2" />
           <span class="lg:block hidden">Stats</span>
         </a>
       </li>
@@ -47,7 +47,7 @@
           href="#"
           class="text-btn text-h flex items-center ease-in-out duration-300 hover:text-p"
         >
-          <settings-icon :color="'#1E1E1E'" class="icon lg:mr-2" />
+          <settings-icon color="#1E1E1E" class="icon lg:mr-2" />
           <span class="lg:block hidden">Habit Tracker</span>
         </a>
       </li>
@@ -62,7 +62,7 @@
         class="hover:text-p ease-in-out duration-300"
       >
         <span class="lg:inline-block hidden">: Hiken</span>
-        <hiken-icon :color="'#1E1E1E'" class="icon block lg:hidden"
+        <hiken-icon color="#1E1E1E" class="icon block lg:hidden"
       /></a>
     </p>
   </div>

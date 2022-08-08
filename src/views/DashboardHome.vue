@@ -25,13 +25,23 @@
           @onChange="selectedValue"
         />
         <button
+          @click="showModal"
           class="flex items-center ml-6 text-btn text-s ease-in-out duration-300 hover:text-p"
         >
           <plus-icon color="#152E58" class="icon mr-2" />
           New label
         </button>
       </div>
-      <base-modal />
+      <base-modal
+        title="New label"
+        text="Lorem ipsum"
+        buttonOk="Accept"
+        buttonNo="Cancel"
+        @close="closeModal"
+        v-show="data.isModalVisible"
+      >
+        <plus-icon color="#1E1E1E" />
+      </base-modal>
     </div>
   </div>
 </template>
@@ -65,15 +75,26 @@ export default defineComponent({
 
     let data = reactive({
       labels: ["Coding", "Design", "Reading"],
+      isModalVisible: false,
     });
 
     const selectedValue = (myvalue: string | number) => {
       console.log(myvalue);
     };
 
+    const showModal = () => {
+      data.isModalVisible = true;
+    };
+
+    const closeModal = () => {
+      data.isModalVisible = false;
+    };
+
     return {
       data,
       selectedValue,
+      showModal,
+      closeModal,
     };
   },
 });

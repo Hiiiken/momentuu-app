@@ -4,7 +4,11 @@
       class="modal-content-container bg-white w-[600px] max-w-full absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] p-[40px] rounded-2xl max-h-[90%] overflow-y-auto"
     >
       <button class="fixed top-6 right-6">
-        <close-icon color="#9AA5B8" class="icon icon-close" />
+        <close-icon
+          @click="$emit('close')"
+          color="#9AA5B8"
+          class="icon icon-close"
+        />
       </button>
       <h3 v-if="title" class="text-heading text-h text-2xl mb-4">
         {{ title }}
@@ -20,6 +24,7 @@
       </button>
       <button
         v-if="buttonNo"
+        @click="$emit('close')"
         class="bg-transparent border border-lt py-4 px-6 rounded text-t text-btn ease-in-out duration-300 hover:bg-s hover:border-s hover:text-white inline-block mt-8"
       >
         {{ buttonNo }}
@@ -44,7 +49,6 @@ export default defineComponent({
     text: {
       type: String,
       default: "Modal paragraph",
-      require: true,
     },
     buttonOk: {
       type: String,
@@ -53,6 +57,16 @@ export default defineComponent({
       type: String,
     },
   },
+
+  // setup() {
+  //   const closeModal = () => {
+  //     console.log("Close");
+  //   };
+
+  //   return {
+  //     closeModal,
+  //   };
+  // },
 });
 </script>
 
