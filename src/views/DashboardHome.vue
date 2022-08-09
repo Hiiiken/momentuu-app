@@ -38,13 +38,14 @@
 
       <base-modal
         title="New label"
-        text="Lorem ipsum"
         buttonOk="Accept"
         buttonNo="Cancel"
         @close="closeModal"
         v-show="data.isModalVisible"
       >
-        <plus-icon color="#1E1E1E" />
+        <div class="mt-8">
+          <base-input label="Label name" placeHolder="i.e. coding, design..." />
+        </div>
       </base-modal>
     </div>
   </div>
@@ -59,6 +60,7 @@ import TheSidebar from "@/components/TheSidebar.vue";
 import BaseDropdown from "@/components/BaseDropdown.vue";
 import PlusIcon from "@/components/icons/PlusIcon.vue";
 import BaseModal from "@/components/BaseModal.vue";
+import BaseInput from "@/components/BaseInput.vue";
 
 export default defineComponent({
   name: "DashboardHome",
@@ -68,6 +70,7 @@ export default defineComponent({
     BaseDropdown,
     PlusIcon,
     BaseModal,
+    BaseInput,
   },
   setup() {
     const router = useRouter();

@@ -16,19 +16,22 @@
       <p v-if="text" class="text-body text-t">
         {{ text }}
       </p>
-      <button
-        v-if="buttonOk"
-        class="bg-p py-4 px-6 rounded text-white text-btn ease-in-out duration-300 hover:bg-s inline-block mt-8 mr-4"
-      >
-        {{ buttonOk }}
-      </button>
-      <button
-        v-if="buttonNo"
-        @click="$emit('close')"
-        class="bg-transparent border border-lt py-4 px-6 rounded text-t text-btn ease-in-out duration-300 hover:bg-s hover:border-s hover:text-white inline-block mt-8"
-      >
-        {{ buttonNo }}
-      </button>
+      <slot />
+      <div class="btn-group">
+        <button
+          v-if="buttonOk"
+          class="bg-p py-4 px-6 rounded text-white text-btn ease-in-out duration-300 hover:bg-s inline-block mt-8 mr-4"
+        >
+          {{ buttonOk }}
+        </button>
+        <button
+          v-if="buttonNo"
+          @click="$emit('close')"
+          class="bg-transparent border border-lt py-4 px-6 rounded text-t text-btn ease-in-out duration-300 hover:bg-s hover:border-s hover:text-white inline-block mt-8"
+        >
+          {{ buttonNo }}
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -48,7 +51,6 @@ export default defineComponent({
     },
     text: {
       type: String,
-      default: "Modal paragraph",
     },
     buttonOk: {
       type: String,

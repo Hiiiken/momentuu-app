@@ -1,16 +1,11 @@
 <template>
   <label v-if="label" class="text-body text-h block mb-2">{{ label }}</label>
   <select
-    class="group bg-lg-2 px-6 py-4 rounded text-lt text-body"
+    class="block w-full bg-lg-2 px-6 py-4 rounded text-lt text-body"
     @change="(event) => onChange((event.target as HTMLSelectElement).value)"
   >
     <option selected disabled>{{ defaultValue }}</option>
-    <option
-      v-for="option in options.labels"
-      :key="option"
-      :value="option"
-      class=""
-    >
+    <option v-for="option in options.labels" :key="option" :value="option">
       {{ option }}
     </option>
   </select>
