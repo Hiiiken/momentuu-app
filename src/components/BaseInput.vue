@@ -6,7 +6,7 @@
     :placeholder="placeHolder"
     :value="modelValue"
     @input="
-      $emit('update:modelValue', ($event.target as HTMLSelectElement).value)
+      $emit('update:modelValue', ($event.target as HTMLInputElement).value)
     "
   />
 </template>

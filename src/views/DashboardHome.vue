@@ -52,7 +52,9 @@
             v-model="inputValue"
           />
         </div>
-        <h2>{{ inputValue }}</h2>
+        <p v-if="savedLabelMessage" class="mt-4 text-body text-emerald-500">
+          Your label has been added!
+        </p>
       </base-modal>
     </div>
   </div>
@@ -112,24 +114,29 @@ export default defineComponent({
 
     const closeModal = () => {
       isModalVisible.value = false;
+      savedLabelMessage.value = false;
     };
 
+    let inputValue = ref("");
+    let savedLabelMessage = ref(false);
+
     const saveLabel = () => {
-      console.log("saved");
       axios
         .post("http://localhost:3000/labels", {
-          id: 3,
-          name: inputValue,
+          name: inputValue.value,
         })
-        .then((res) => {
-          console.log(res);
+        .then((result) => {
+          dbData.labels.push({
+            id: result.data.id,
+            name: result.data.name,
+          });
+          inputValue.value = "";
+          savedLabelMessage.value = true;
         })
         .catch((err) => {
           console.log(err);
         });
     };
-
-    let inputValue = ref("");
 
     return {
       selectedValue,
@@ -139,6 +146,7 @@ export default defineComponent({
       dbData,
       saveLabel,
       inputValue,
+      savedLabelMessage,
     };
   },
 });

@@ -1,25 +1,20 @@
 {
   "labels": [
     {
-      "id": 1,
-      "name": "Design"
+      "name": "Hiken",
+      "id": 1
     },
     {
-      "id": 2,
-      "name": "Coding"
+      "name": "root",
+      "id": 2
     },
     {
-      "id": 3,
-      "name": {
-        "__v_isShallow": false,
-        "dep": {
-          "w": 0,
-          "n": 0
-        },
-        "__v_isRef": true,
-        "_rawValue": "",
-        "_value": ""
-      }
+      "name": "gin",
+      "id": 3
+    },
+    {
+      "name": "fisher",
+      "id": 4
     }
   ],
   "projects": []
