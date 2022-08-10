@@ -20,8 +20,8 @@
       <div class="dropdown-btn-group flex items-center">
         <div class="inline-block">
           <base-dropdown
-            :options="data"
-            defaultValue="Select something"
+            :options="dbData.labels2"
+            defaultValue="Select a label for your session"
             @onChange="selectedValue"
           />
         </div>
@@ -38,13 +38,17 @@
 
       <base-modal
         title="New label"
-        buttonOk="Accept"
+        buttonOk="Save"
         buttonNo="Cancel"
         @close="closeModal"
-        v-show="data.isModalVisible"
+        v-show="isModalVisible"
       >
         <div class="mt-8">
-          <base-input label="Label name" placeHolder="i.e. coding, design..." />
+          <base-input
+            type="text"
+            label="Label name"
+            placeHolder="i.e. coding, design..."
+          />
         </div>
       </base-modal>
     </div>
@@ -52,8 +56,8 @@
 </template>
 
 <script lang="ts">
-// import axios from 'axios';
-import { defineComponent, reactive } from "@vue/runtime-core";
+import axios from "axios";
+import { defineComponent, reactive, ref } from "@vue/runtime-core";
 import { useRouter } from "vue-router";
 import UserNav from "@/components/UserNav.vue";
 import TheSidebar from "@/components/TheSidebar.vue";
@@ -80,28 +84,39 @@ export default defineComponent({
       return;
     }
 
-    let data = reactive({
-      labels: ["Coding", "Design", "Reading"],
-      isModalVisible: false,
+    let dbData = reactive({
+      labels2: [],
     });
+
+    axios
+      .get("http://localhost:3000/labels")
+      .then((res) => {
+        dbData.labels2 = res.data;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    let isModalVisible = ref(false);
 
     const selectedValue = (myvalue: string | number) => {
       console.log(myvalue);
     };
 
     const showModal = () => {
-      data.isModalVisible = true;
+      isModalVisible.value = true;
     };
 
     const closeModal = () => {
-      data.isModalVisible = false;
+      isModalVisible.value = false;
     };
 
     return {
-      data,
       selectedValue,
       showModal,
       closeModal,
+      isModalVisible,
+      dbData,
     };
   },
 });

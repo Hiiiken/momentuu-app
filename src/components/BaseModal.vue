@@ -59,16 +59,6 @@ export default defineComponent({
       type: String,
     },
   },
-
-  // setup() {
-  //   const closeModal = () => {
-  //     console.log("Close");
-  //   };
-
-  //   return {
-  //     closeModal,
-  //   };
-  // },
 });
 </script>
 

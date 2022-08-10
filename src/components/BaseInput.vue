@@ -1,8 +1,8 @@
 <template>
   <label v-if="label" class="text-body text-h block mb-2">{{ label }}</label>
   <input
-    type="text"
-    class="block w-full bg-white px-6 py-4 rounded text-lt text-body border border-lg-1 focus:border-p"
+    :type="type"
+    class="block w-full bg-white px-6 py-4 rounded text-t text-body border border-lg-1 focus:border-h outline-none"
     :placeholder="placeHolder"
   />
 </template>
@@ -18,6 +18,10 @@ export default defineComponent({
     },
     placeHolder: {
       type: String,
+    },
+    type: {
+      type: String,
+      required: true,
     },
   },
 });

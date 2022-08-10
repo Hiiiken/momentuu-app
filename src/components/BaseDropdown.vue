@@ -5,8 +5,8 @@
     @change="(event) => onChange((event.target as HTMLSelectElement).value)"
   >
     <option selected disabled>{{ defaultValue }}</option>
-    <option v-for="option in options.labels" :key="option" :value="option">
-      {{ option }}
+    <option v-for="option in options" :key="option.id" :value="option.name">
+      {{ option.name }}
     </option>
   </select>
 </template>
