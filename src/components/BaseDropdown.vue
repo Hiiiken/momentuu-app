@@ -1,7 +1,7 @@
 <template>
   <label v-if="label" class="text-body text-h block mb-2">{{ label }}</label>
   <select
-    class="block w-full bg-lg-2 px-6 py-4 rounded text-lt text-body"
+    class="block w-full bg-lg-2 px-6 py-4 rounded text-t text-body outline outline-lg-1 outline-1 focus:outline-h hover:outline-h"
     @change="(event) => onChange((event.target as HTMLSelectElement).value)"
   >
     <option selected disabled>{{ defaultValue }}</option>
