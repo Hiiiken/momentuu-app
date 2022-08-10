@@ -20,7 +20,7 @@
       <div class="dropdown-btn-group flex items-center">
         <div class="inline-block">
           <base-dropdown
-            :options="dbData.labels2"
+            :options="dbData.labels"
             defaultValue="Select a label for your session"
             @onChange="selectedValue"
           />
@@ -42,14 +42,17 @@
         buttonNo="Cancel"
         @close="closeModal"
         v-show="isModalVisible"
+        @save="saveLabel"
       >
         <div class="mt-8">
           <base-input
             type="text"
             label="Label name"
             placeHolder="i.e. coding, design..."
+            v-model="inputValue"
           />
         </div>
+        <h2>{{ inputValue }}</h2>
       </base-modal>
     </div>
   </div>
@@ -85,13 +88,13 @@ export default defineComponent({
     }
 
     let dbData = reactive({
-      labels2: [],
+      labels: [],
     });
 
     axios
       .get("http://localhost:3000/labels")
       .then((res) => {
-        dbData.labels2 = res.data;
+        dbData.labels = res.data;
       })
       .catch((err) => {
         console.log(err);
@@ -111,12 +114,31 @@ export default defineComponent({
       isModalVisible.value = false;
     };
 
+    const saveLabel = () => {
+      console.log("saved");
+      axios
+        .post("http://localhost:3000/labels", {
+          id: 3,
+          name: inputValue,
+        })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+
+    let inputValue = ref("");
+
     return {
       selectedValue,
       showModal,
       closeModal,
       isModalVisible,
       dbData,
+      saveLabel,
+      inputValue,
     };
   },
 });

@@ -20,6 +20,7 @@
       <div class="btn-group">
         <button
           v-if="buttonOk"
+          @click="$emit('save')"
           class="bg-p py-4 px-6 rounded text-white text-btn ease-in-out duration-300 hover:bg-s inline-block mt-8 mr-4"
         >
           {{ buttonOk }}

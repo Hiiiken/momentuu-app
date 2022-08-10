@@ -4,6 +4,10 @@
     :type="type"
     class="block w-full bg-white px-6 py-4 rounded text-t text-body border border-lg-1 focus:border-h outline-none"
     :placeholder="placeHolder"
+    :value="modelValue"
+    @input="
+      $emit('update:modelValue', ($event.target as HTMLSelectElement).value)
+    "
   />
 </template>
 
@@ -22,6 +26,9 @@ export default defineComponent({
     type: {
       type: String,
       required: true,
+    },
+    modelValue: {
+      type: [String, Number],
     },
   },
 });
