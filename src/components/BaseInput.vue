@@ -3,6 +3,9 @@
   <input
     :type="type"
     class="block w-full bg-white px-6 py-4 rounded text-t text-body border border-lg-1 focus:border-h outline-none"
+    :class="{
+      'border-red-400': error,
+    }"
     :placeholder="placeHolder"
     :value="modelValue"
     @input="
@@ -29,6 +32,10 @@ export default defineComponent({
     },
     modelValue: {
       type: [String, Number],
+      required: true,
+    },
+    error: {
+      type: Boolean,
     },
   },
 });

@@ -68,8 +68,12 @@
             label="Label name"
             placeHolder="i.e. coding, design..."
             v-model="inputValue"
+            :error="isError"
           />
         </div>
+        <p v-if="isError" class="mt-4 text-body text-red-400">
+          Please enter a name for your label
+        </p>
         <p v-if="savedLabelMessage" class="mt-4 text-body text-emerald-500">
           Your label has been added!
         </p>
@@ -89,8 +93,12 @@
             label="Project name"
             placeHolder="i.e. personal development..."
             v-model="inputValue"
+            :error="isError"
           />
         </div>
+        <p v-if="isError" class="mt-4 text-body text-red-400">
+          Please enter a name for your project
+        </p>
         <p v-if="savedLabelMessage" class="mt-4 text-body text-emerald-500">
           Your project has been added!
         </p>
@@ -160,12 +168,21 @@ export default defineComponent({
     const closeModal = () => {
       isModalVisible.value = false;
       savedLabelMessage.value = false;
+      isError.value = false;
     };
 
     let inputValue = ref("");
+
+    let isError = ref(false);
+
     let savedLabelMessage = ref(false);
 
     const saveLabel = () => {
+      if (inputValue.value === "") {
+        isError.value = true;
+        return;
+      }
+
       axios
         .post("http://localhost:3000/labels", {
           name: inputValue.value,
@@ -184,6 +201,12 @@ export default defineComponent({
     };
 
     const saveProject = () => {
+      if (inputValue.value === "") {
+        isError.value = true;
+        console.log("error");
+        return;
+      }
+
       axios
         .post("http://localhost:3000/projects", {
           name: inputValue.value,
@@ -210,6 +233,7 @@ export default defineComponent({
       inputValue,
       savedLabelMessage,
       saveProject,
+      isError,
     };
   },
 });
