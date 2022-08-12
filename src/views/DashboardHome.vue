@@ -38,7 +38,7 @@
       <div class="dropdown-btn-group flex items-center">
         <div class="inline-block">
           <base-dropdown
-            :options="dbData.labels"
+            :options="dbData.projects"
             defaultValue="Select a project"
             @onChange="selectedValue"
           />
@@ -81,18 +81,18 @@
         buttonNo="Cancel"
         v-if="isModalVisible === 'project modal'"
         @close="closeModal"
-        @save="saveLabel"
+        @save="saveProject"
       >
         <div class="mt-8">
           <base-input
             type="text"
-            label="Label name"
-            placeHolder="i.e. coding, design..."
+            label="Project name"
+            placeHolder="i.e. personal development..."
             v-model="inputValue"
           />
         </div>
         <p v-if="savedLabelMessage" class="mt-4 text-body text-emerald-500">
-          Your label has been added!
+          Your project has been added!
         </p>
       </base-modal>
     </div>
@@ -157,10 +157,6 @@ export default defineComponent({
 
     let isModalVisible = ref(false);
 
-    // const showModal = () => {
-    //   isModalVisible.value = true;
-    // };
-
     const closeModal = () => {
       isModalVisible.value = false;
       savedLabelMessage.value = false;
@@ -187,18 +183,34 @@ export default defineComponent({
         });
     };
 
+    const saveProject = () => {
+      axios
+        .post("http://localhost:3000/projects", {
+          name: inputValue.value,
+        })
+        .then((result) => {
+          dbData.projects.push({
+            id: result.data.id,
+            name: result.data.name,
+          });
+          inputValue.value = "";
+          savedLabelMessage.value = true;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+
     return {
       selectedValue,
-      // showModal,
       closeModal,
       isModalVisible,
       dbData,
       saveLabel,
       inputValue,
       savedLabelMessage,
+      saveProject,
     };
   },
 });
 </script>
-
-<style scoped></style>
