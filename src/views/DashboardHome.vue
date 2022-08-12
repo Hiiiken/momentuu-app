@@ -27,11 +27,29 @@
         </div>
         <div class="inline-block">
           <button
-            @click="showModal"
+            @click="isModalVisible = 'label modal'"
             class="flex items-center ml-6 text-btn text-s ease-in-out duration-300 hover:text-p"
           >
             <plus-icon color="#152E58" class="icon mr-2" />
             New label
+          </button>
+        </div>
+      </div>
+      <div class="dropdown-btn-group flex items-center">
+        <div class="inline-block">
+          <base-dropdown
+            :options="dbData.labels"
+            defaultValue="Select a project"
+            @onChange="selectedValue"
+          />
+        </div>
+        <div class="inline-block">
+          <button
+            @click="isModalVisible = 'project modal'"
+            class="flex items-center ml-6 text-btn text-s ease-in-out duration-300 hover:text-p"
+          >
+            <plus-icon color="#152E58" class="icon mr-2" />
+            New project
           </button>
         </div>
       </div>
@@ -40,8 +58,29 @@
         title="New label"
         buttonOk="Save"
         buttonNo="Cancel"
+        v-if="isModalVisible === 'label modal'"
         @close="closeModal"
-        v-show="isModalVisible"
+        @save="saveLabel"
+      >
+        <div class="mt-8">
+          <base-input
+            type="text"
+            label="Label name"
+            placeHolder="i.e. coding, design..."
+            v-model="inputValue"
+          />
+        </div>
+        <p v-if="savedLabelMessage" class="mt-4 text-body text-emerald-500">
+          Your label has been added!
+        </p>
+      </base-modal>
+
+      <base-modal
+        title="New project"
+        buttonOk="Save"
+        buttonNo="Cancel"
+        v-if="isModalVisible === 'project modal'"
+        @close="closeModal"
         @save="saveLabel"
       >
         <div class="mt-8">
@@ -90,7 +129,8 @@ export default defineComponent({
     }
 
     let dbData = reactive({
-      labels: [],
+      labels: [] as Array<any>,
+      projects: [] as Array<any>,
     });
 
     axios
@@ -102,15 +142,24 @@ export default defineComponent({
         console.log(err);
       });
 
-    let isModalVisible = ref(false);
+    axios
+      .get("http://localhost:3000/projects")
+      .then((res) => {
+        dbData.projects = res.data;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
     const selectedValue = (myvalue: string | number) => {
       console.log(myvalue);
     };
 
-    const showModal = () => {
-      isModalVisible.value = true;
-    };
+    let isModalVisible = ref(false);
+
+    // const showModal = () => {
+    //   isModalVisible.value = true;
+    // };
 
     const closeModal = () => {
       isModalVisible.value = false;
@@ -140,7 +189,7 @@ export default defineComponent({
 
     return {
       selectedValue,
-      showModal,
+      // showModal,
       closeModal,
       isModalVisible,
       dbData,

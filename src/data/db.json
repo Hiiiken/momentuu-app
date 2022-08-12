@@ -5,25 +5,26 @@
       "id": 1
     },
     {
-      "name": "root",
+      "name": "Gin",
       "id": 2
     },
     {
-      "name": "gin",
+      "name": "Root",
       "id": 3
     },
     {
-      "name": "fisher",
+      "name": "Fisher",
       "id": 4
     },
     {
-      "name": "gg",
+      "name": "GG",
       "id": 5
-    },
-    {
-      "name": "dfasdf",
-      "id": 6
     }
   ],
-  "projects": []
+  "projects": [
+    {
+      "name": "ProjectX",
+      "id": 1
+    }
+  ]
 }
