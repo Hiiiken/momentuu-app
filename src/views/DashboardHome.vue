@@ -17,40 +17,43 @@
           Let’s be a bit more productive today, eh?
         </p>
       </div>
-      <div class="dropdown-btn-group flex items-center">
-        <div class="inline-block">
-          <base-dropdown
-            :options="dbData.labels"
-            defaultValue="Select a label for your session"
-            @onChange="selectedValue"
-          />
+      <div class="flex flex-wrap">
+        <div class="dropdown-btn-group flex items-center mr-10 flex-wrap mb-4">
+          <div class="inline-block mr-6">
+            <base-dropdown
+              :options="dbData.labels"
+              defaultValue="Select a label for your session"
+              @onChange="selectedValue"
+            />
+          </div>
+          <div class="inline-block">
+            <button
+              @click="isModalVisible = 'label modal'"
+              class="flex items-center text-btn text-s ease-in-out duration-300 hover:text-p sm:mt-0 sm:mb-0 mt-4 mb-4"
+            >
+              <plus-icon color="#152E58" class="icon mr-2" />
+              New label
+            </button>
+          </div>
         </div>
-        <div class="inline-block">
-          <button
-            @click="isModalVisible = 'label modal'"
-            class="flex items-center ml-6 text-btn text-s ease-in-out duration-300 hover:text-p"
-          >
-            <plus-icon color="#152E58" class="icon mr-2" />
-            New label
-          </button>
-        </div>
-      </div>
-      <div class="dropdown-btn-group flex items-center">
-        <div class="inline-block">
-          <base-dropdown
-            :options="dbData.projects"
-            defaultValue="Select a project"
-            @onChange="selectedValue"
-          />
-        </div>
-        <div class="inline-block">
-          <button
-            @click="isModalVisible = 'project modal'"
-            class="flex items-center ml-6 text-btn text-s ease-in-out duration-300 hover:text-p"
-          >
-            <plus-icon color="#152E58" class="icon mr-2" />
-            New project
-          </button>
+        <div
+          class="dropdown-btn-group flex items-center place-content-between grow flex-wrap"
+        >
+          <div class="inline-block">
+            <base-dropdown
+              :options="dbData.projects"
+              defaultValue="Select a project"
+              @onChange="selectedValue"
+            />
+          </div>
+          <div class="inline-block">
+            <button
+              @click="isModalVisible = 'project modal'"
+              class="bg-p py-4 px-6 rounded flex items-center text-btn text-white ease-in-out duration-300 hover:bg-s"
+            >
+              New project
+            </button>
+          </div>
         </div>
       </div>
 
