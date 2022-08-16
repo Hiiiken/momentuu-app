@@ -106,6 +106,8 @@
           Your project has been added!
         </p>
       </base-modal>
+
+      <stop-watch />
     </div>
   </div>
 </template>
@@ -120,6 +122,7 @@ import BaseDropdown from "@/components/BaseDropdown.vue";
 import PlusIcon from "@/components/icons/PlusIcon.vue";
 import BaseModal from "@/components/BaseModal.vue";
 import BaseInput from "@/components/BaseInput.vue";
+import StopWatch from "@/components/StopWatch.vue";
 
 export default defineComponent({
   name: "DashboardHome",
@@ -130,6 +133,7 @@ export default defineComponent({
     PlusIcon,
     BaseModal,
     BaseInput,
+    StopWatch,
   },
   setup() {
     const router = useRouter();
@@ -206,7 +210,6 @@ export default defineComponent({
     const saveProject = () => {
       if (inputValue.value === "") {
         isError.value = true;
-        console.log("error");
         return;
       }
 

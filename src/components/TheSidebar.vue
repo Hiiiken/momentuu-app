@@ -48,7 +48,7 @@
           class="text-btn text-h flex items-center ease-in-out duration-300 hover:text-p"
         >
           <settings-icon color="#1E1E1E" class="icon lg:mr-2" />
-          <span class="lg:block hidden">Habit Tracker</span>
+          <span class="lg:block hidden">Settings</span>
         </a>
       </li>
     </ul>

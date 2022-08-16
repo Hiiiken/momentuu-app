@@ -15,15 +15,11 @@
     {
       "name": "Fisher",
       "id": 4
-    },
-    {
-      "name": "ddd",
-      "id": 5
     }
   ],
   "projects": [
     {
-      "name": "fff",
+      "name": "Project CSGO",
       "id": 1
     }
   ]
