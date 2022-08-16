@@ -11,12 +11,12 @@
   </button>
   <!-- <p>{{ formattedElapsedTime }}</p> -->
   <p>{{ message }}</p>
-  <p>{{ elapsedTime }}</p>
+  <p>{{ formattedElapsedTime }}</p>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { ref } from "vue";
+import { ref, computed } from "vue";
 
 export default defineComponent({
   name: "StopWatch",
@@ -27,11 +27,18 @@ export default defineComponent({
     let timer = ref(undefined);
     let elapsedTime = ref(0);
 
+    const formattedElapsedTime = computed(() => {
+      const date = new Date(null);
+      date.setSeconds(elapsedTime.value / 1000);
+      const utc = date.toUTCString();
+      return utc.substr(utc.indexOf(":") + 1, 5);
+    });
+
     const timerStart = () => {
       message.value = `It's happening!`;
       timerRunning.value = true;
       timer.value = setInterval(() => {
-        elapsedTime.value += 1;
+        elapsedTime.value += 1000;
       }, 1000);
     };
 
@@ -56,6 +63,7 @@ export default defineComponent({
       timerReset,
       timer,
       elapsedTime,
+      formattedElapsedTime,
     };
 
     // let elapsedTime = ref(0);
