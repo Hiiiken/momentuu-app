@@ -21,6 +21,10 @@
     {
       "name": "Project CSGO",
       "id": 1
+    },
+    {
+      "name": "Project Valorant",
+      "id": 2
     }
   ]
 }

@@ -1,31 +1,17 @@
 <template>
   <h1 class="text-p text-6xl z-50">Stopwatch</h1>
-  <button
-    @click="timerStart"
-    v-if="!timerRunning && !resuming"
-    class="bg-p p-4 m-4"
-  >
+  <button @click="timerStart" v-if="!timerRunning" class="bg-p p-4 m-4">
     Start
   </button>
   <button @click="timerPause" v-if="timerRunning" class="bg-p p-4 m-4">
     Stop
   </button>
-  <button
-    @click="timerResume"
-    v-if="(resuming && timerRunning) || (resuming && !timerRunning)"
-    class="bg-p p-4 m-4"
-  >
-    Resume
-  </button>
-  <button
-    @click="timerReset"
-    v-if="timerRunning || resuming"
-    class="bg-p p-4 m-4"
-  >
+  <button @click="timerReset" v-if="timerRunning" class="bg-p p-4 m-4">
     Reset
   </button>
   <!-- <p>{{ formattedElapsedTime }}</p> -->
   <p>{{ message }}</p>
+  <p>{{ elapsedTime }}</p>
 </template>
 
 <script lang="ts">
@@ -38,29 +24,28 @@ export default defineComponent({
   setup() {
     let message = ref("Let the countdown begin!!");
     let timerRunning = ref(false);
-    let resuming = ref(false);
+    let timer = ref(undefined);
+    let elapsedTime = ref(0);
 
     const timerStart = () => {
       message.value = `It's happening!`;
       timerRunning.value = true;
-      resuming.value = false;
+      timer.value = setInterval(() => {
+        elapsedTime.value += 1;
+      }, 1000);
     };
 
     const timerPause = () => {
       message.value = "Pause for now";
       timerRunning.value = false;
-      resuming.value = true;
-    };
-
-    const timerResume = () => {
-      message.value = `Let's go again`;
-      timerRunning.value = true;
-      resuming.value = false;
+      clearInterval(timer.value);
     };
 
     const timerReset = () => {
-      message.value = "Reset!";
+      message.value = "Start again?";
       timerRunning.value = false;
+      elapsedTime.value = 0;
+      clearInterval(timer.value);
     };
 
     return {
@@ -68,9 +53,9 @@ export default defineComponent({
       timerRunning,
       timerStart,
       timerPause,
-      timerResume,
       timerReset,
-      resuming,
+      timer,
+      elapsedTime,
     };
 
     // let elapsedTime = ref(0);
