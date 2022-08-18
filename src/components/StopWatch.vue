@@ -6,9 +6,7 @@
   <button @click="timerPause" v-if="timerRunning" class="bg-p p-4 m-4">
     Stop
   </button>
-  <button @click="timerReset" v-if="timerRunning" class="bg-p p-4 m-4">
-    Reset
-  </button>
+  <button @click="timerReset" class="bg-p p-4 m-4">Reset</button>
   <p>{{ message }}</p>
 
   <div class="base-timer">
@@ -41,10 +39,11 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
 import { ref, computed, watch } from "vue";
 
+// Circle colors and animation
 const FULL_DASH_ARRAY = 283;
 const WARNING_THRESHOLD = 10;
 const ALERT_THRESHOLD = 5;
@@ -62,6 +61,7 @@ const COLOR_CODES = {
     threshold: ALERT_THRESHOLD,
   },
 };
+// END Circle colors and animation
 
 const TIME_LIMIT = 20;
 
@@ -71,32 +71,9 @@ export default defineComponent({
     let message = ref("Let the countdown begin!!");
     let timerRunning = ref(false);
 
-    let timePassed = ref(0);
-    let timerInterval = ref(null);
-
+    // Circle colors and animation
     let circleDasharray = computed(() => {
       return `${(timeFraction.value * FULL_DASH_ARRAY).toFixed(0)} 283`;
-    });
-
-    let timeLeft = computed(() => {
-      return TIME_LIMIT - timePassed.value;
-    });
-
-    const formattedTimeLeft = computed(() => {
-      const timeLeftt = timeLeft.value;
-      const minutes = Math.floor(timeLeftt / 60);
-      let seconds = timeLeftt % 60;
-
-      if (seconds < 10) {
-        seconds = `0${seconds}`;
-      }
-
-      return `${minutes}:${seconds}`;
-    });
-
-    let timeFraction = computed(() => {
-      const rawTimeFraction = timeLeft.value / TIME_LIMIT;
-      return rawTimeFraction - (1 / TIME_LIMIT) * (1 - rawTimeFraction);
     });
 
     let remainingPathColor = computed(() => {
@@ -111,15 +88,40 @@ export default defineComponent({
       }
     });
 
+    let timeFraction = computed(() => {
+      const rawTimeFraction = timeLeft.value / TIME_LIMIT;
+      return rawTimeFraction - (1 / TIME_LIMIT) * (1 - rawTimeFraction);
+    });
+    // END Circle colors and animation
+
+    let timePassed = ref(0);
+    let timerInterval: any = ref(null);
+
+    let timeLeft = computed(() => {
+      return TIME_LIMIT - timePassed.value;
+    });
+
+    const formattedTimeLeft = computed(() => {
+      const timeLeftt = timeLeft.value;
+      let minutes: number | string = Math.floor(timeLeftt / 60);
+      let seconds: number | string = timeLeftt % 60;
+
+      if (seconds < 10) {
+        seconds = `0${seconds}`;
+      }
+
+      if (minutes < 10) {
+        minutes = `0${minutes}`;
+      }
+
+      return `${minutes}:${seconds}`;
+    });
+
     watch(timeLeft, (newValue) => {
       if (newValue === 0) {
         onTimesUp();
       }
     });
-
-    // onMounted(() => {
-    //   startTimer();
-    // });
 
     let onTimesUp = () => {
       clearInterval(timerInterval.value);
@@ -183,13 +185,13 @@ export default defineComponent({
   }
 
   &__path-elapsed {
-    stroke-width: 7px;
+    stroke-width: 10px;
     stroke: grey;
   }
 
   &__path-remaining {
-    stroke-width: 7px;
-    stroke-linecap: round;
+    stroke-width: 10px;
+    stroke-linecap: butt;
     transform: rotate(90deg);
     transform-origin: center;
     transition: 1s linear all;
