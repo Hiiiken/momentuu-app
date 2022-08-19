@@ -1,47 +1,74 @@
 <template>
-  <h1 class="text-p text-6xl z-50">Stopwatch</h1>
-  <button @click="timerStart" v-if="!timerRunning" class="bg-p p-4 m-4">
-    Start
-  </button>
-  <button @click="timerPause" v-if="timerRunning" class="bg-p p-4 m-4">
-    Stop
-  </button>
-  <button @click="timerReset" class="bg-p p-4 m-4">Reset</button>
-  <p>{{ message }}</p>
-
-  <div class="base-timer">
-    <svg
-      class="base-timer__svg"
-      viewBox="0 0 100 100"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <g class="base-timer__circle">
-        <circle
-          class="base-timer__path-elapsed"
-          cx="50"
-          cy="50"
-          r="45"
-        ></circle>
-        <path
-          :stroke-dasharray="circleDasharray"
-          class="base-timer__path-remaining"
-          :class="remainingPathColor"
-          d="
+  <div class="text-center my-[72px]">
+    <div class="base-timer m-auto mb-4">
+      <svg
+        class="base-timer__svg"
+        viewBox="0 0 100 100"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g class="base-timer__circle">
+          <circle
+            class="base-timer__path-elapsed"
+            cx="50"
+            cy="50"
+            r="45"
+          ></circle>
+          <path
+            :stroke-dasharray="circleDasharray"
+            class="base-timer__path-remaining"
+            :class="remainingPathColor"
+            d="
             M 50, 50
             m -45, 0
             a 45,45 0 1,0 90,0
             a 45,45 0 1,0 -90,0
           "
-        ></path>
-      </g>
-    </svg>
-    <span class="base-timer__label">{{ formattedTimeLeft }}</span>
+          ></path>
+        </g>
+      </svg>
+      <span class="base-timer__label text-heading text-s text-5xl">
+        {{ formattedTimeLeft }}
+      </span>
+      <span class="base-timer__label mt-10 text-body text-t">{{
+        message
+      }}</span>
+    </div>
+
+    <div class="timer-button-group gap-2 flex justify-center items-center mt-8">
+      <button
+        @click="timerReset"
+        class="border border-lt rounded w-[56px] h-[56px] ease-in-out duration-300 hover:bg-s hover:text-white hover:border-s"
+      >
+        <reset-icon color="#474D57" class="icon icon-reset inline" />
+      </button>
+      <button
+        @click="timerStart"
+        v-if="!timerRunning"
+        class="bg-s py-4 px-6 rounded text-btn text-white ease-in-out duration-300 hover:bg-p"
+      >
+        Start session
+      </button>
+      <button
+        @click="timerPause"
+        v-if="timerRunning"
+        class="bg-s py-4 px-6 rounded text-btn text-white ease-in-out duration-300 hover:bg-p"
+      >
+        Stop
+      </button>
+      <button
+        class="border border-lt rounded w-[56px] h-[56px] ease-in-out duration-300 hover:bg-s hover:text-white hover:border-s"
+      >
+        <next-icon color="#474D57" class="icon icon-next inline" />
+      </button>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 import { ref, computed, watch } from "vue";
+import ResetIcon from "@/components/icons/ResetIcon.vue";
+import NextIcon from "@/components/icons/NextIcon.vue";
 
 // Circle colors and animation
 const FULL_DASH_ARRAY = 283;
@@ -67,6 +94,10 @@ const TIME_LIMIT = 20;
 
 export default defineComponent({
   name: "StopWatch",
+  components: {
+    ResetIcon,
+    NextIcon,
+  },
   setup() {
     // Circle colors and animation
     let circleDasharray = computed(() => {
@@ -91,7 +122,7 @@ export default defineComponent({
     });
     // END Circle colors and animation
 
-    let message = ref("Let the countdown begin!!");
+    let message = ref("Start focus mode");
     let timerRunning = ref(false);
 
     let timePassed = ref(0);
@@ -125,7 +156,7 @@ export default defineComponent({
 
     // Buttons
     const timerStart = () => {
-      message.value = `It's happening!`;
+      message.value = `Focus time`;
       timerRunning.value = true;
       timerInterval.value = setInterval(() => (timePassed.value += 1), 1000);
     };
@@ -137,7 +168,7 @@ export default defineComponent({
     };
 
     const timerReset = () => {
-      message.value = "Start again?";
+      message.value = "Start focus mode";
       timerRunning.value = false;
       clearInterval(timerInterval.value);
       timePassed.value = 0;
@@ -161,7 +192,7 @@ export default defineComponent({
 });
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .base-timer {
   position: relative;
   width: 300px;
@@ -178,7 +209,7 @@ export default defineComponent({
 
   &__path-elapsed {
     stroke-width: 10px;
-    stroke: grey;
+    stroke: #f3fbf0;
   }
 
   &__path-remaining {
@@ -191,15 +222,15 @@ export default defineComponent({
     stroke: currentColor;
 
     &.green {
-      color: rgb(65, 184, 131);
+      color: #e37871;
     }
 
     &.orange {
-      color: orange;
+      color: #f58078;
     }
 
     &.red {
-      color: red;
+      color: #f1a09b;
     }
   }
 
@@ -211,7 +242,11 @@ export default defineComponent({
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 48px;
   }
+}
+button:hover .icon.icon-reset path,
+button:hover .icon.icon-next path {
+  stroke: white;
+  transition: all ease-in-out 300ms;
 }
 </style>
