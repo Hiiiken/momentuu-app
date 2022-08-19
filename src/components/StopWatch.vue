@@ -68,9 +68,6 @@ const TIME_LIMIT = 20;
 export default defineComponent({
   name: "StopWatch",
   setup() {
-    let message = ref("Let the countdown begin!!");
-    let timerRunning = ref(false);
-
     // Circle colors and animation
     let circleDasharray = computed(() => {
       return `${(timeFraction.value * FULL_DASH_ARRAY).toFixed(0)} 283`;
@@ -93,6 +90,9 @@ export default defineComponent({
       return rawTimeFraction - (1 / TIME_LIMIT) * (1 - rawTimeFraction);
     });
     // END Circle colors and animation
+
+    let message = ref("Let the countdown begin!!");
+    let timerRunning = ref(false);
 
     let timePassed = ref(0);
     let timerInterval: any = ref(null);
@@ -119,34 +119,28 @@ export default defineComponent({
 
     watch(timeLeft, (newValue) => {
       if (newValue === 0) {
-        onTimesUp();
+        timerPause();
       }
     });
 
-    let onTimesUp = () => {
-      clearInterval(timerInterval.value);
-    };
-
-    let startTimer = () => {
-      timerInterval.value = setInterval(() => (timePassed.value += 1), 1000);
-    };
-
-    // Mine
+    // Buttons
     const timerStart = () => {
       message.value = `It's happening!`;
       timerRunning.value = true;
-      startTimer();
+      timerInterval.value = setInterval(() => (timePassed.value += 1), 1000);
     };
 
     const timerPause = () => {
       message.value = "Pause for now";
       timerRunning.value = false;
-      onTimesUp();
+      clearInterval(timerInterval.value);
     };
 
     const timerReset = () => {
       message.value = "Start again?";
       timerRunning.value = false;
+      clearInterval(timerInterval.value);
+      timePassed.value = 0;
     };
 
     return {
@@ -162,8 +156,6 @@ export default defineComponent({
       timeLeft,
       timeFraction,
       remainingPathColor,
-      onTimesUp,
-      startTimer,
     };
   },
 });
